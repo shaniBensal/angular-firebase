@@ -1,0 +1,30 @@
+<div class="container d-flex">
+  <div class="col-2">
+  <app-list-buttons
+  [isAsc]="isAsc"
+  [isList]="isList"
+  (onRefreshEmmiter) ="getDataFromServer()"
+  (onToggleAscEmmiter)="toggleAsc()"
+  (onToggleViewEmmiter)="toggleListView()"
+  ></app-list-buttons>
+  </div>
+  <div class="col-10">
+    <div class="row pb-3">
+      <input
+        placeholder="Search"
+        [(ngModel)]="filterBy"
+        class="form-control col-6 mx-3"
+        (input)="filterList()"
+      />
+      <button type="button" class="btn btn-primary" (click)="clearInput()">
+        Clear
+      </button>
+    </div>
+    <div class="row pb-3 ml-3">Show: {{ filteredList.length ? filteredList.length : list.length }} Results</div>
+    <div class="{{ isList ? '' : ' d-flex flex-wrap' }} container px-0">
+      <div *ngFor="let item of filteredList.length ? filteredList : list" class="{{ isList ? 'col-12' : 'col-md-5 col-12' }}">
+        <app-item [item]="item" [isList]="isList"></app-item>
+      </div>
+    </div>
+  </div>
+</div>

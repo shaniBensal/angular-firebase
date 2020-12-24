@@ -1,0 +1,42 @@
+<div class="container border rounded mb-3">
+  <div class="row">
+    <div
+      class="bg-image {{ isList ? 'col-5' : 'col-12' }} pl-0 cursor-pointer"
+      [style.background]="'url(' + imgSrc + ')'" [routerLink]="['/item/' + item.id]"
+    ></div>
+    <div
+      class="{{
+        isList ? 'col-7 d-flex justify-content-center flex-column' : 'col-12'
+      }}"
+    >
+      <div
+        class="d-flex justify-content-center cursor-pointer"
+        (click)="toggleEdit()"
+        *ngIf="!editMode"
+      >
+        {{ item.Title }}
+      </div>
+      <div class="row pr-2" *ngIf="editMode">
+          <div class="input-group mb-3 d-flex flex-md-row flex-column">
+            <input
+              type="text"
+              class="form-control col-md-9 w-100"
+              input
+              [(ngModel)]="newTitle"
+            />
+            <button
+              class="btn btn-outline-secondary col-md-2"
+              type="button"
+              (click)="updateTitle()"
+            >
+              Save
+            </button>
+          </div>
+      </div>
+      <div class="d-flex justify-content-center">IMDB: {{ item.imdbID }}</div>
+      <div class="d-flex justify-content-center">
+        Year: {{ item.Year | date: "y" }}
+      </div>
+    </div>
+  </div>
+</div>

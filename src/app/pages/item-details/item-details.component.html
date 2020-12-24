@@ -1,0 +1,21 @@
+<div class="container pt-4 d-flex flex-column align-items-center">
+  <div class="row">
+    <Button type="button" class="btn btn-primary">
+      <p routerLink="/" class="mb-0">Go Back</p>
+    </Button>
+  </div>
+  <div class="row pt-3">
+    <img class="col-5" [src]="imgSrc" />
+    <div class="col-7">
+      <div class="row">
+        <h4>{{ selectedItem.Title }} ({{ selectedItem.Type }})</h4>
+      </div>
+      <div class="row">
+        <p>IMDB Code: {{ selectedItem.imdbID }}</p>
+      </div>
+      <div class="row">
+        <p>Year: {{ selectedItem.Year }}</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div *ngIf="itemList">
+  <ul class="nav nav-tabs mb-3 d-flex justify-content-center">
+    <li
+      *ngFor="let item of (itemList) | keyvalue"
+      class="nav-item"
+      (click)="setSelectedKey(item.key)"
+    >
+      <p
+        class="nav-link mb-0 cursor-pointer {{
+          item.key == selectedKey ? 'active' : ''
+        }}"
+      >
+        {{ item.key }} ({{ item.value.length }})
+      </p>
+    </li>
+  </ul>
+  <app-list
+    [list]="(itemList)[selectedKey]"
+    (loadDataEmmiter)="loadData()"
+  ></app-list>
+</div>
