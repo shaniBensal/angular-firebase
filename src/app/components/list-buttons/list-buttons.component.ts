@@ -25,7 +25,7 @@ export class ListButtonsComponent implements OnInit {
   }
 
   public refreshList(): void {
-    this.onToggleViewEmmiter.emit();
+    this.onRefreshEmmiter.emit();
   }
 
 }

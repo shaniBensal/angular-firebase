@@ -21,6 +21,14 @@ export class MainPageComponent implements OnInit {
    this.service.getList().subscribe(res => this.itemList = res);
   }
 
+  public updateData(item: Item): void{
+    this.service.updateItemById(item);
+  }
+
+  public deleteItem(itemId: string): void{
+    this.service.deleteItemById(itemId);
+  }
+
   public setSelectedKey(key: string): void {
     this.selectedKey = key;
   }

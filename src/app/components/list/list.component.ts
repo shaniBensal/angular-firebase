@@ -10,6 +10,8 @@ import { UtilService } from 'src/app/services/utils.service';
 export class ListComponent implements OnInit {
   @Input() public list: Item[];
   @Output() public loadDataEmmiter: EventEmitter<void> = new EventEmitter<void>();
+  @Output() public onUpdateItemEmmiter: EventEmitter<Item> = new EventEmitter<Item>();
+  @Output() public onDeleteItemEmmiter: EventEmitter<string> = new EventEmitter<string>();
   public isList: boolean = true;
   public filterBy: string = '';
   public filteredList: Item[] = [];
@@ -50,5 +52,9 @@ export class ListComponent implements OnInit {
 
   public getDataFromServer(): void {
     this.loadDataEmmiter.emit();
+  }
+
+  public onUpdateItem(item: Item): void {
+    this.onUpdateItemEmmiter.emit(item);
   }
 }

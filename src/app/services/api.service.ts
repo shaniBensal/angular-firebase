@@ -12,6 +12,7 @@ import { UtilService } from './utils.service';
 })
 export class ApiService {
   private collectionName: string = 'data-list';
+
   constructor(private fireService: AngularFirestore, private utilService: UtilService, private toastr: ToastrService) { }
 
   public initiallizeDb(): any {
@@ -40,5 +41,13 @@ export class ApiService {
       const item = res.data() as Item;
       return item;
     })
-    )}
+    )};
+
+    public updateItemById(updatedItem: Item) {
+      return this.fireService.collection(this.collectionName).doc(updatedItem.id).update(updatedItem);
+    }
+
+    public deleteItemById(itemId: string){
+      return this.fireService.collection(this.collectionName).doc(itemId).delete();
+    }
 }
