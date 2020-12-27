@@ -1,11 +1,5 @@
 {
-  "targets": {
-    "realcommerce-4c9bb": {
-      "hosting": {
-        "realcommerce": [
-          "realcommerce-4c9bb"
-        ]
-      }
-    }
+  "projects": {
+    "default": "realcommerce-4c9bb"
   }
 }
