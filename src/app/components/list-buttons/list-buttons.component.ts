@@ -8,9 +8,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class ListButtonsComponent implements OnInit {
   @Input() public isList: boolean;
   @Input() public isAsc: boolean;
+  @Input() public addBtn: boolean = true;
   @Output() public onToggleViewEmmiter: EventEmitter<void> = new EventEmitter<void>();
   @Output() public onToggleAscEmmiter: EventEmitter<void> = new EventEmitter<void>();
   @Output() public onRefreshEmmiter: EventEmitter<void> = new EventEmitter<void>();
+  @Output() public onAddNewEmmiter: EventEmitter<void> = new EventEmitter<void>();
   constructor() { }
 
   ngOnInit() {
@@ -26,6 +28,10 @@ export class ListButtonsComponent implements OnInit {
 
   public refreshList(): void {
     this.onRefreshEmmiter.emit();
+  }
+
+  public addNew(): void {
+    this.onAddNewEmmiter.emit();
   }
 
 }

@@ -17,6 +17,7 @@
   <app-list
     [list]="(itemList)[selectedKey]"
     (loadDataEmmiter)="loadData()"
+    (onCreateNewItem)="createNew($event)"
     (onUpdateItemEmmiter)="updateData($event)"
     (onDeleteItemEmmiter)="deleteItem($event)"
   ></app-list>

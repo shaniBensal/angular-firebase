@@ -1,13 +1,13 @@
-<div class="container border rounded mb-3">
+<div class="container border rounded mb-3 p-2">
   <div class="row">
     <div
-      class="bg-image {{ isList ? 'col-5' : 'col-12' }} pl-0 cursor-pointer"
+      class="bg-image {{ isList ? 'col-md-5' : 'col-12' }} pl-0 cursor-pointer"
       [style.background]="'url(' + imgSrc + ')'"
       [routerLink]="['/item/' + item.id]"
     ></div>
     <div
       class="{{
-        isList ? 'col-7 d-flex flex-column justify-content-center' : 'col-12'
+        isList ? 'col-md-7 d-flex flex-column justify-content-center' : 'col-12'
       }}"
     >
       <p
@@ -50,7 +50,9 @@
         Year: {{ item.Year | date: "y" }}
       </p>
       <div>
-      <button type="button" class="btn btn-danger" (click)="removeItem()">Remove</button>
+      <button type="button" class="btn btn-danger mt-2" (click)="removeItem()">
+        <i-feather name="trash"></i-feather>
+      </button>
       </div>
     </div>
   </div>

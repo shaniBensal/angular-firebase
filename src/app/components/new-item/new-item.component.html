@@ -1,0 +1,75 @@
+<div class="container border rounded mb-3 p-2">
+  <div class="row mx-0">
+    <div class="{{isList ? 'col-md-5' : 'col-12'}}">
+      <div class="row mx-0">
+        <div class="d-flex flex-column align-items-baseline">
+        <button type="button" class="btn btn-primary" (click)="updatePoster = true" >
+          <i-feather name="edit"></i-feather>
+        </button>
+        <img [src]="newItem.Poster" class="poster" alt="img" (error)="imageNotFound()" />
+      </div>
+    </div>
+    </div>
+    <div class="{{isList ? 'col-md-7' : 'col-12'}}">
+      <div class="row mx-0">
+        <div class="mb-3 w-100">
+          <label class="form-label"
+            >Title: </label
+          >
+          <input
+          [(ngModel)]="newItem.Title"
+            type="text"
+            class="form-control"
+            required
+          />
+        </div>
+      </div>
+      <div class="row mx-0">
+        <div class="mb-3 w-100">
+          <label class="form-label"
+            >Imdb ID: </label
+          >
+          <input
+          [(ngModel)]="newItem.imdbID"
+            type="text"
+            class="form-control"
+            required
+          />
+        </div>
+      </div>
+      <div class="row mx-0">
+        <div class="mb-3 w-100">
+          <label class="form-label"
+            >Year: </label
+          >
+          <input
+          [(ngModel)]="newItem.Year"
+            type="number"
+            class="form-control"
+            required
+          />
+        </div>
+      </div>
+      <div class="row mx-0" *ngIf="updatePoster">
+        <div class="mb-3 w-100">
+          <label class="form-label"
+            >Poster: </label
+          >
+          <input
+          [(ngModel)]="newItem.Poster"
+            type="text"
+            class="form-control"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row mx-0 d-flex w-100 justify-content-between px-2">
+      <button type="button" class="btn btn-primary" (click)="closeNewItemEmmiter.emit()" >
+        cancel
+      </button>
+      <button type="button" class="btn btn-primary" (click)="saveNewItem()" >
+        save
+      </button>
+    </div>
+  </div>
+</div>

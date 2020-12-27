@@ -3,15 +3,14 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
-import {AngularFireModule} from '@angular/fire';
-import {AngularFireDatabaseModule} from '@angular/fire/database';
-import {AngularFirestoreModule} from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from 'src/environments/environment';
-import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './services/api.service';
 import { ListComponent } from './components/list/list.component';
 import { ItemComponent } from './components/item/item.component';
@@ -20,6 +19,10 @@ import { ListButtonsComponent } from './components/list-buttons/list-buttons.com
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { ItemDetailsComponent } from './pages/item-details/item-details.component';
 import { ItemDetailsResolver } from './resolver/item-details.resolver';
+import { InputItemComponent } from './components/input-item/input-item.component';
+import { NewItemComponent } from './components/new-item/new-item.component';
+import { SearchFieldComponent } from './components/search-field/search-field.component';
+import { IconsModule } from './icons/icons.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { ItemDetailsResolver } from './resolver/item-details.resolver';
     ListComponent,
     ItemComponent,
     ItemDetailsComponent,
-    ListButtonsComponent
+    ListButtonsComponent,
+    InputItemComponent,
+    NewItemComponent,
+    SearchFieldComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +47,7 @@ import { ItemDetailsResolver } from './resolver/item-details.resolver';
     AngularFireDatabaseModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    IconsModule
   ],
   providers: [ApiService, ItemDetailsResolver],
   bootstrap: [AppComponent]

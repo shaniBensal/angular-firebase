@@ -1,0 +1,11 @@
+<div class="row pb-3">
+  <input
+    placeholder="Search"
+    [(ngModel)]="filterBy"
+    class="form-control col-6 mx-3"
+    (input)="filterList()"
+  />
+  <button type="button" class="btn btn-primary" (click)="clearInput()">
+    <i-feather name="x"></i-feather>
+  </button>
+</div>

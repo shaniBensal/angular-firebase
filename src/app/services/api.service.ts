@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Item } from '../models/item.model';
 import *  as  data from './data.json';
@@ -36,18 +36,30 @@ export class ApiService {
     ));
   }
 
-  public getItemById(itemId): Observable<any>{
+  public getItemById(itemId): Observable<any> {
     return this.fireService.collection(this.collectionName).doc(itemId).get().pipe(map(res => {
       const item = res.data() as Item;
       return item;
     })
-    )};
+    )
+  };
 
-    public updateItemById(updatedItem: Item) {
-      return this.fireService.collection(this.collectionName).doc(updatedItem.id).update(updatedItem);
-    }
+  public updateItemById(updatedItem: Item) {
+    return this.fireService.collection(this.collectionName).doc(updatedItem.id).update(updatedItem);
+  }
 
-    public deleteItemById(itemId: string){
-      return this.fireService.collection(this.collectionName).doc(itemId).delete();
-    }
+  public deleteItemById(itemId: string) {
+    return this.fireService.collection(this.collectionName).doc(itemId).delete();
+  }
+
+  public createNewItem(item: Item) {
+    return this.fireService.collection(this.collectionName).add(item).then((docRef) => {
+      let itemWhithId: Item = item;
+      itemWhithId.id = docRef.id;
+      this.updateItemById(itemWhithId);
+    })
+      .catch((error) => {
+        console.error("Error finding document: ", error);
+      });
+  }
 }

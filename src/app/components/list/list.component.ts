@@ -12,10 +12,11 @@ export class ListComponent implements OnInit {
   @Output() public loadDataEmmiter: EventEmitter<void> = new EventEmitter<void>();
   @Output() public onUpdateItemEmmiter: EventEmitter<Item> = new EventEmitter<Item>();
   @Output() public onDeleteItemEmmiter: EventEmitter<string> = new EventEmitter<string>();
+  @Output() public onCreateNewItem: EventEmitter<Item> = new EventEmitter<Item>();
   public isList: boolean = true;
-  public filterBy: string = '';
   public filteredList: Item[] = [];
   public isAsc: boolean = true;
+  public showAddNewItem: boolean = true;
 
   constructor(private utilService: UtilService) { }
 
@@ -34,19 +35,18 @@ export class ListComponent implements OnInit {
     this.isList = !this.isList;
   }
 
-  public filterList(): void {
-    if (this.filterBy !== '') {
+  public filterList(str: string): void {
+    if (str !== '') {
       let list: Item[] = [...this.list];
       this.filteredList = list.filter(item => {
         var d = new Date(item.Year);
         let year = d.getFullYear().toString();
-        if (item.Title.toLowerCase().includes(this.filterBy.toLowerCase()) || year.includes(this.filterBy)) { return item }
+        if (item.Title.toLowerCase().includes(str.toLowerCase()) || year.includes(str)) { return item }
       });
     } else { this.filteredList = [] }
   }
 
   public clearInput(): void {
-    this.filterBy = '';
     this.filteredList = [];
   }
 
@@ -56,5 +56,13 @@ export class ListComponent implements OnInit {
 
   public onUpdateItem(item: Item): void {
     this.onUpdateItemEmmiter.emit(item);
+  }
+
+  public toggleShowNewItem(): void {
+    this.showAddNewItem = !this.showAddNewItem;
+  }
+
+  public addNewItem(newItem: Item): void {
+    this.onCreateNewItem.emit(newItem);
   }
 }

@@ -29,6 +29,10 @@ export class MainPageComponent implements OnInit {
     this.service.deleteItemById(itemId);
   }
 
+  public createNew(item: Item): void {
+    this.service.createNewItem(item);
+  }
+
   public setSelectedKey(key: string): void {
     this.selectedKey = key;
   }
